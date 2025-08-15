@@ -6,7 +6,6 @@ import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import { getInitials } from "@/lib/utils";
 import { cn } from "@/lib/utils";
 import PostFeed from "../feeds";
-import { UserList } from "./FollowUser";
 
 export default function Profile() {
   const [activeTab, setActiveTab] = useState<
@@ -42,14 +41,6 @@ export default function Profile() {
                 <span className="font-semibold">{user.postCount}</span>
                 <span className="text-muted-foreground">Posts</span>
               </div>
-              <div className="flex flex-col items-center">
-                <span className="font-semibold">{user.followers}</span>
-                <span className="text-muted-foreground">Followers</span>
-              </div>
-              <div className="flex flex-col items-center">
-                <span className="font-semibold">{user.following}</span>
-                <span className="text-muted-foreground">Following</span>
-              </div>
             </div>
 
             <div className="mt-2 text-xs text-muted-foreground">
@@ -61,11 +52,7 @@ export default function Profile() {
 
       {/* Custom Tabs */}
       <div className="flex gap-2 border-b">
-        {[
-          { key: "posts", label: "Posts" },
-          { key: "followers", label: "Followers" },
-          { key: "following", label: "Following" },
-        ].map((tab) => (
+        {[{ key: "posts", label: "Posts" }].map((tab) => (
           <button
             key={tab.key}
             onClick={() => setActiveTab(tab.key as typeof activeTab)}
@@ -83,13 +70,7 @@ export default function Profile() {
 
       {/* Tab Content */}
       <div className="mt-4">
-        {activeTab === "posts" && <PostFeed />}
-        {activeTab === "followers" && (
-          <UserList currentUserId={"123"} type="followers" />
-        )}
-        {activeTab === "following" && (
-          <UserList currentUserId={"123"} type="following" />
-        )}
+        <PostFeed />
       </div>
     </div>
   );
