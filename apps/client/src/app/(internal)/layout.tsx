@@ -6,9 +6,9 @@ export default function InternalLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <div className="py-3">
+    <div className="flex flex-col h-screen">
       <Header />
-      {children}
+      <div className="py-2 flex-1">{children}</div>
     </div>
   );
 }

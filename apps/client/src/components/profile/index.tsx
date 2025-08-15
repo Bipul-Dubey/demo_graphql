@@ -83,20 +83,12 @@ export default function Profile() {
 
       {/* Tab Content */}
       <div className="mt-4">
-        {activeTab === "posts" && (
-          <p className="text-muted-foreground">
-            <PostFeed />
-          </p>
-        )}
+        {activeTab === "posts" && <PostFeed />}
         {activeTab === "followers" && (
-          <p className="text-muted-foreground">
-            <UserList currentUserId={"123"} type="followers" />
-          </p>
+          <UserList currentUserId={"123"} type="followers" />
         )}
         {activeTab === "following" && (
-          <p className="text-muted-foreground">
-            <UserList currentUserId={"123"} type="following" />
-          </p>
+          <UserList currentUserId={"123"} type="following" />
         )}
       </div>
     </div>

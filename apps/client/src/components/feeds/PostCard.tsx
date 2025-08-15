@@ -49,16 +49,16 @@ export default function PostCard({
     <Card className="w-full">
       <CardHeader className="flex flex-row items-center gap-3 pb-2">
         {/* Initials Circle */}
-        <div className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-semibold">
+        <span className="w-10 h-10 rounded-full bg-primary text-primary-foreground flex items-center justify-center font-semibold">
           {getInitials(post.author.name)}
-        </div>
+        </span>
 
-        <div>
+        <span>
           <p className="font-semibold">{post.author.name}</p>
           <p className="text-sm text-muted-foreground">
             @{post.author.username}
           </p>
-        </div>
+        </span>
       </CardHeader>
 
       <CardContent className="space-y-3">

@@ -11,6 +11,9 @@ import {
 import { getInitials } from "@/lib/utils";
 import PostSearch from "./PostSearch";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
+import { Button } from "../ui/button";
+import { MessageSquare } from "lucide-react";
 
 export default function Header() {
   const router = useRouter();
@@ -25,15 +28,24 @@ export default function Header() {
   };
 
   return (
-    <header className="h-14 bg-background/80 border-b flex items-center px-4 justify-between sticky top-0 z-50 backdrop-blur-sm">
+    <header className="max-h-14 bg-background/80 border-b py-4 flex items-center px-4 justify-between sticky top-0 z-50 backdrop-blur-sm">
       {/* Left: Logo / Title */}
-      <div className="font-bold text-lg tracking-tight">GraphQL Feed</div>
+      <div className="font-bold text-lg tracking-tight">
+        <Link href={"/feeds"}>GraphQL Feed</Link>
+      </div>
 
       {/* Center: Search Bar */}
       <PostSearch />
 
       {/* Right: Avatar with Menu */}
       <div className="flex items-center gap-4">
+        <Button
+          variant="ghost"
+          size={"icon"}
+          onClick={() => router.push("/chats")}
+        >
+          <MessageSquare />
+        </Button>
         <Separator orientation="vertical" className="h-6" />
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
