@@ -1,0 +1,38 @@
+scalar DateTime
+
+type Post {
+  id: ID!
+  title: String!
+  content: String!
+  author: User!
+  createdAt: DateTime!
+  updatedAt: DateTime!
+}
+
+input CreatePostInput {
+  title: String!
+  content: String!
+}
+
+input UpdatePostInput {
+  id: ID!
+  title: String
+  content: String
+}
+
+extend type Query {
+  "All posts (newest first)"
+  posts: [Post!]!
+  "Single post"
+  post(id: ID!): Post
+  "Posts by specific user"
+  userPosts(userId: ID!): [Post!]!
+  "Posts authored by the current user"
+  myPosts: [Post!]!
+}
+
+extend type Mutation {
+  createPost(input: CreatePostInput!): Post!
+  updatePost(input: UpdatePostInput!): Post!
+  deletePost(id: ID!): Boolean!
+}

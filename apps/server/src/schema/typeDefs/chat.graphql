@@ -1,0 +1,27 @@
+scalar DateTime
+
+type Message {
+  id: ID!
+  content: String!
+  author: User!
+  createdAt: DateTime!
+}
+
+input SendMessageInput {
+  content: String!
+}
+
+extend type Query {
+  "Latest 50 messages"
+  messages: [Message!]!
+}
+
+extend type Mutation {
+  "Send a chat message"
+  sendMessage(input: SendMessageInput!): Message!
+}
+
+extend type Subscription {
+  "Fires whenever a new message is sent"
+  messageSent: Message!
+}

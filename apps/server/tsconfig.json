@@ -1,7 +1,8 @@
 {
   "compilerOptions": {
+    "moduleResolution": "nodenext", // for modern Node ESM subpath resolution
+    "module": "nodenext", // must match moduleResolution
     "target": "ES2020",
-    "module": "commonjs",
     "lib": ["ES2020"],
     "outDir": "./dist",
     "rootDir": "./src",
@@ -12,7 +13,8 @@
     "resolveJsonModule": true,
     "declaration": true,
     "declarationMap": true,
-    "sourceMap": true
+    "sourceMap": true,
+    "noImplicitAny": false
   },
   "include": ["src/**/*"],
   "exclude": ["node_modules", "dist"]
